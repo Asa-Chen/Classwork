@@ -1,0 +1,261 @@
+/*
+ *#File: DLL.cc
+ *#Author: Asa Chen
+ *#Date: August 29, 2022
+ *#Info: The implimentation file for the linked list used in Homework Project 1
+ */
+#include <iostream>
+#include <iomanip>
+//#include "DLL.h"
+using namespace std;
+DLL::DLL()
+{
+    head = tail = nullptr;
+}
+
+void DLL::add(string value, string key)
+{
+    if (head == nullptr)
+    {
+        head = tail = new Node;
+        head->set_value(value);
+        head->set_key(key);
+        head->next = nullptr;
+        tail->next = nullptr;
+        return;
+    }
+    else
+    {
+        //-----------------------search to see if a key is in the list
+        for (Node *tmp = head; tmp != nullptr; tmp = tmp->next)
+        {
+            if (tmp->get_key() == key)
+            {
+                tmp->set_value(value);
+                return;
+            }
+        } //---------------------- If the key is not found
+        tail->next = new Node;
+        tail->next->prev = tail;
+        tail = tail->next;
+        tail->set_value(value);
+        tail->set_key(key);
+        tail->next = nullptr;
+    }
+}
+
+void DLL::key_remove(string target)
+{
+    Node *tmpPtr;
+    if (head == nullptr)
+    {
+        // Do Nothing
+    }
+    else if (head == tail && head->get_key() == target)
+    {
+        tmpPtr = head;
+        head = nullptr;
+        tail = nullptr;
+        delete tmpPtr;
+    }
+    else if (head->get_key() == target)
+    {
+        tmpPtr = head;
+        head = head->next;
+        head->prev = nullptr;
+        delete tmpPtr;
+    }
+    else if (tail->get_key() == target)
+    {
+        tmpPtr = tail;
+        tail = tail->prev;
+        tail->next = nullptr;
+        delete tmpPtr;
+    }
+    else
+    {
+        for (tmpPtr = head; tmpPtr != nullptr; tmpPtr = tmpPtr->next)
+        {
+            if (tmpPtr->get_key() == target)
+            {
+                break;
+            }
+        }
+        tmpPtr->prev->next = tmpPtr->next;
+        tmpPtr->next->prev = tmpPtr->prev;
+        delete tmpPtr;
+    }
+}
+
+void DLL::value_s_remove(string value)
+{
+    Node *tmpPtr;
+    Node *itPtr;
+    if (head == nullptr)
+    {
+        // Do nothing
+    }
+    else if (head == tail && head->get_value() == value)
+    {
+        tmpPtr = head;
+        head = nullptr;
+        tail = nullptr;
+        delete tmpPtr;
+    }
+    else
+    {
+        itPtr = head;
+        while (itPtr != nullptr)
+        {
+            if (itPtr == head && itPtr->get_value() == value)
+            {
+                tmpPtr = itPtr;
+                itPtr = itPtr -> next;
+                head = head->next;
+                head->prev = nullptr;
+                delete tmpPtr;
+            }
+            else if (itPtr->get_value() == value && itPtr != tail)
+            {
+                tmpPtr = itPtr;
+                itPtr -> prev -> next = itPtr -> next;
+                itPtr -> next -> prev = itPtr -> prev;
+                itPtr = itPtr -> next;
+                delete tmpPtr;
+
+            }
+            else if (itPtr == tail && itPtr->get_value() == value)
+            {
+                tmpPtr = itPtr;
+                itPtr = itPtr -> next;
+                tail = tail->prev;
+                tail->next = nullptr;
+                delete tmpPtr;
+            } else {
+                itPtr = itPtr -> next;
+            }
+        }
+    }
+}
+
+void DLL::show_from_front()
+{
+    if (head == nullptr)
+    {
+        cout << "List is empty." << endl;
+    }
+    for (Node *tmp = head; tmp != nullptr; tmp = tmp->next)
+    {
+        cout << tmp->get_value() << "  " << tmp->get_key() << endl;
+    }
+}
+
+void DLL::show_from_back()
+{
+    if (tail == nullptr)
+    {
+        cout << "List is empty." << endl;
+    }
+    for (Node *tmp = tail; tmp != nullptr; tmp = tmp->prev)
+    {
+        cout << tmp->get_value() << "  " << tmp->get_key() << endl;
+    }
+}
+
+int DLL::list_size()
+{
+    int counter = 0;
+    if (head == nullptr)
+    {
+        return counter;
+    }
+    else
+    {
+        for (Node *tmp = head; tmp != nullptr; tmp = tmp->next)
+        {
+            counter++;
+        }
+        return counter;
+    }
+}
+
+string DLL::key_value_search(string target)
+{
+    if (head == nullptr)
+    {
+        return "NOT_FOUND";
+    }
+    else
+    {
+        for (Node *tmp = head; tmp != nullptr; tmp = tmp->next)
+        {
+            if (tmp->get_key() == target)
+            {
+                return tmp->get_value();
+            }
+        }
+        return "NOT_FOUND";
+    }
+}
+
+string DLL::key_search(string target)
+{
+    if (head == nullptr)
+    {
+        return "NOT_FOUND";
+    }
+    else
+    {
+        for (Node *tmp = head; tmp != nullptr; tmp = tmp->next)
+        {
+            if (tmp->get_key() == target)
+            {
+                return tmp->get_key();
+            }
+        }
+        return "NOT_FOUND";
+    }
+}
+
+string DLL::value_search(string target)
+{
+    if (head == nullptr)
+    {
+        return "NOT_FOUND";
+    }
+    else
+    {
+        for (Node *tmp = head; tmp != nullptr; tmp = tmp->next)
+        {
+            if (tmp->get_value() == target)
+            {
+                return tmp->get_value();
+            }
+        }
+        return "NOT_FOUND";
+    }
+}
+
+vector<string> DLL::show_values() {
+    vector<string> val;
+    if (head == nullptr) {
+        return val;
+    } else {
+        for(Node* tmp = head; tmp != nullptr; tmp = tmp -> next) {
+            val.push_back(tmp -> get_value());
+        }
+        return val;
+    }
+}
+
+vector<string> DLL::show_keys() {
+    vector<string> key;
+    if (head == nullptr) {
+        return key;
+    } else {
+        for(Node* tmp = head; tmp != nullptr; tmp = tmp -> next) {
+            key.push_back(tmp -> get_key());
+        }
+        return key;
+    }
+}

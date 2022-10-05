@@ -1,0 +1,41 @@
+#include <iostream>
+#include <iomanip>
+#include "DLL.h"
+using namespace std;
+int main() {
+string key;
+string value;
+DLL L2;
+
+L2.show_from_front();
+cout << "Please input a value you'd like to store\n";
+cin >> value;
+cout << "Please input a key you'd like to use to access the value\n";
+cin >> key;
+L2.add(value, key);
+cout << "Please input a value you'd like to store\n";
+cin >> value;
+cout << "Please input a key you'd like to use to access the value\n";
+cin >> key;
+L2.add(value, key);
+L2.show_from_back();
+L2.show_from_front();
+cout << "Please input a key to search: ";
+cin >> key;
+cout << endl <<  L2.key_search(key);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    return 0;
+}
