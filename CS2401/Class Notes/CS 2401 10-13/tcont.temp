@@ -1,0 +1,27 @@
+//template implimentation file, use .template on linux and .temp on windows
+//DONT PUT <> IN THE >H FILE
+//USE TEMPLATE PARAMETER IN <> WHEN DEFINING CLASS AND FUNCTION DEFINITIONS
+
+
+
+template<class T>
+Tcont<T>::Tcont(){ //angle brackets need to be added to name of the class in scope resolution. in addition to T
+    used = 0;
+}
+
+template<class T>
+void Tcont<T>::add(const T& item) {
+    if (used < SIZE) {
+        data[used] = item;
+        used++;
+    } else {
+        cout << "out of room";
+    }
+}
+
+template<class T>
+void Tcont<T>::display()const {
+    for (int i = 0; i < used; i++) {
+        cout << data[i] << endl; //you need overloaded output operators or you'll get an "unable to instantiate" error
+    }
+}

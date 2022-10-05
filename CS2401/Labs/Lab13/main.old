@@ -1,0 +1,29 @@
+#include <iostream>
+#include <fstream>
+#include "btreelab.cc"
+using namespace std;
+
+
+int main () {
+Bnode* tree = NULL;
+string idata;
+ifstream fin;
+ofstream fout;
+
+
+fin.open("names.txt");
+if (fin.fail()) {cout << "\nFile failed to open."; return 0;}
+
+while (!fin.eof()) {
+    getline(fin, idata);
+    while (fin.peek() == ' ' || fin.peek() == '\n') {fin.ignore();}
+    add(tree, idata);
+}
+inorder(tree);
+
+fin.close();
+
+
+
+    return 0;
+}

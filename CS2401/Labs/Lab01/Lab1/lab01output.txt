@@ -1,0 +1,25 @@
+Script started on 2021-09-03 12:16:18-0400
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+]0;asa_chen@DESKTOP-KL85VHT: /mnt/c/Users/Asa/Documents/CS/CS2401/Labs/Lab01/Lab1[01;32masa_chen@DESKTOP-KL85VHT[00m:[01;34m/mnt/c/Users/Asa/Documents/CS/CS2401/Labs/Lab01/Lab1[00m$ ./a.exe
+[6n[m]0;C:\Users\Asa\Documents\CS\CS2401\Labs\Lab01\Lab1\a.exe[?25hInput your first set of time values (Time-Set 1) below
+Hours:[1C3
+Minutes: 23
+Input your second set of time values (Time-Set 2) below
+Hours:[1C1
+Minutes: 54
+Input your scalar value (Must be an integer):
+3
+Time-Set 1 + Time-Set 2 = 5:17
+Time-Set 1 - Time-Set 2 = 1:29
+Time-Set 1 * scalar = 10:09
+Time-Set 2 * scalar =5:42
+Time-Set 1 / scalar =1:07
+Time-Set 2 / scalar =0:38
+Time-Set 1 = Time-Set 2: False
+Time-Set 1 < Time-Set 2: False
+Time-Set 1 <= Time-Set 2: False
+]0;asa_chen@DESKTOP-KL85VHT: /mnt/c/Users/Asa/Documents/CS/CS2401/Labs/Lab01/Lab1[01;32masa_chen@DESKTOP-KL85VHT[00m:[01;34m/mnt/c/Users/Asa/Documents/CS/CS2401/Labs/Lab01/Lab1[00m$ exit
+
+Script done on 2021-09-03 12:16:28-0400

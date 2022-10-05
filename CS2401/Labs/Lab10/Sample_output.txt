@@ -1,0 +1,65 @@
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab10> g++ lab10main.cc
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab10> ./a.exe
+Enter 1 to record a Circle.
+Enter 2 to record a Rectangle.
+Enter 3 to record a Trapezoid.
+Enter 4 to quit and see total for the box.
+1
+Please input the Circle's radius: 4
+Enter 1 to record a Circle.
+Enter 2 to record a Rectangle.
+Enter 3 to record a Trapezoid.
+Enter 4 to quit and see total for the box.
+3
+Please input base 1: 3
+
+Please input base 2: 4
+
+Please input height: 15
+Enter 1 to record a Circle.
+Enter 2 to record a Rectangle.
+Enter 3 to record a Trapezoid.
+Enter 4 to quit and see total for the box.
+2
+Please input the Rectangle's length: 3
+
+Please input the Rectangle's width: 5
+Enter 1 to record a Circle.
+Enter 2 to record a Rectangle.
+Enter 3 to record a Trapezoid.
+Enter 4 to quit and see total for the box.
+2
+Please input the Rectangle's length: 4
+
+Please input the Rectangle's width: 8
+Enter 1 to record a Circle.
+Enter 2 to record a Rectangle.
+Enter 3 to record a Trapezoid.
+Enter 4 to quit and see total for the box.
+2
+Please input the Rectangle's length: 2
+
+Please input the Rectangle's width: 12
+Enter 1 to record a Circle.
+Enter 2 to record a Rectangle.
+Enter 3 to record a Trapezoid.
+Enter 4 to quit and see total for the box.
+1
+Please input the Circle's radius: 6
+Enter 1 to record a Circle.
+Enter 2 to record a Rectangle.
+Enter 3 to record a Trapezoid.
+Enter 4 to quit and see total for the box.
+3
+Please input base 1: 4
+
+Please input base 2: 4
+
+Please input height: 12
+Enter 1 to record a Circle.
+Enter 2 to record a Rectangle.
+Enter 3 to record a Trapezoid.
+Enter 4 to quit and see total for the box.
+4
+The total cost of this box of blocks is $456.25
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab10>

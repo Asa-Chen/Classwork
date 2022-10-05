@@ -1,0 +1,33 @@
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab09> g++ -g calc_useful.cc stackmain.cc    
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab09> ./a.exe                               
+
+Please enter your expression:
+12 679 5 + 4 * 8 / +
+Answer: 354
+Enter another equation?(y or n)y
+
+Please enter your expression:
+34 6 + 16 * 18 -
+Answer: 622
+Enter another equation?(y or n)y
+
+Please enter your expression:
+12 6 - 8 + 7 * +
+Error: Out of order, or too many, operands.
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab09> ./a.exe
+
+Please enter your expression:
+56 78 84 + 33 *
+Error: Too few operands.
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab09> ./a.exe
+
+Please enter your expression:
+34 21 2 - 5 / 3 * +
+Answer: 43
+Enter another equation?(y or n)y
+
+Please enter your expression:
+100 50 25 - 69 * 2 * +
+Answer: 3550
+Enter another equation?(y or n)n
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab09> 

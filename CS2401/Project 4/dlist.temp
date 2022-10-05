@@ -1,0 +1,254 @@
+
+
+template<class T>
+dlist<T>::dlist() { //default constructor
+    head = NULL;
+    tail = NULL;
+}
+
+
+//big 3
+template<class T>
+dlist<T>::~dlist() {
+    if (head == NULL) {return;} //If the list is empty, don't try to delete it
+    Node<T>* tmp;
+    while (head != NULL) { //Run through the list and delete all the elements
+        tmp = head;
+        head = head -> next();
+        delete tmp;
+    }
+    //cout << "list deleted" << endl;
+}
+
+template<class T>
+dlist<T>::dlist(const dlist& other) { //Copy function
+    Node<T>* cursor_other = other.head; //set a cursor at the start of 'other'
+    Node<T>* cursor;
+    head = tail = NULL; //set the copy head & tail to NULL, since the defult constructor is not called
+    if (head == NULL) { //If the list is empty (which it initially should be) set the first element to head
+        head = tail = cursor = new Node<T>(cursor_other -> data());
+        cursor_other = cursor_other -> next();
+    }
+    while (cursor_other != NULL) { //While the 'other' cursor is not at the end of its list, copy the elements to the new list
+        cursor -> set_next(new Node<T>(cursor_other -> data()));
+        cursor -> next() -> set_previous(cursor);
+        cursor = cursor -> next();
+        cursor_other = cursor_other -> next();
+    }
+    tail = cursor; //keep track of the tail
+
+}
+
+template<class T>
+void dlist<T>::operator =(const dlist& other) {
+    if (head == other.head) { //Check to see if the heads are the same, if so, don't copy.
+        cout << "Lists are the same." << endl;
+        return;
+    }
+    Node<T>* tmp;
+    while (head != NULL) { //If the heads are not the same, delete the old list
+        tmp = head;
+        head = head -> next();
+        delete tmp;
+    }
+    //cout << "list deleted" << endl;
+    
+    Node<T>* cursor_other = other.head; //Same copy function
+    Node<T>* cursor;
+    head = tail = NULL; //set the copy head & tail to NULL, since the default constructor is not called
+    if (head == NULL) { //If the list is empty (which it initially should be) set the first element to head
+        head = tail = cursor = new Node<T>(cursor_other -> data());
+        cursor_other = cursor_other -> next();
+    }
+    while (cursor_other != NULL) { //While the 'other' cursor is not at the end of its list, copy the elements to the new list
+        cursor -> set_next(new Node<T>(cursor_other -> data()));
+        cursor -> next() -> set_previous(cursor);
+        cursor = cursor -> next();
+        cursor_other = cursor_other -> next();
+    }
+    tail = cursor; //keep track of the tail
+
+}
+
+
+//insert functions
+template<class T>
+void dlist<T>::rear_insert(T item) {
+    if (head == NULL) { //If the list is empty, start a new list with the data passed in
+        head = tail = new Node<T>(item);
+    } else {
+        Node<T>* tmp = new Node<T>(item); //create a new node
+        tmp -> set_previous(tail); //set it after tail
+        tail -> set_next(tmp);
+        tail = tmp; //move the tail
+    }
+}
+
+template<class T>
+void dlist<T>::front_insert(T item) {
+    if (head == NULL) { //If the list is empty, start a new list with the data passed in
+        head = tail = new Node<T>(item);
+    } else {
+        Node<T>* tmp = head; //create a new node duplicated to head
+        head = new Node<T>(item); //set head to a new node with the passed in data
+        tmp -> set_previous(head); //correct the pointers
+        head -> set_next(tmp);
+    }
+}
+
+
+//removal functions
+template<class T>
+void dlist<T>::front_remove() {
+    if (head == NULL) { //If the list is empty, do nothing
+        return;
+    } else {
+        Node<T>* tmp = head; //set a tmp to head
+        head = head -> next(); //move head to the next node
+        if (head == NULL) { //If the list is now empty, delete the tmp and stop
+            delete tmp; //This is to avoid NULL segfaults from line 112
+            return;
+            } 
+        head -> set_previous(NULL);
+        delete tmp;
+    }
+}
+
+template<class T>
+void dlist<T>::rear_remove() {
+    if (tail == NULL) { //If the list is empty, return
+        return;
+    } else {
+        Node<T>* tmp = tail; //set tmp to tail
+        tail = tail -> previous(); //move the tail back one
+        if (tail == NULL) { //If the list is now empty, delete tmp and stop
+            delete tmp; //This is to avoid NULL segfaults from line 128
+            return;
+            }
+        tail -> set_next(NULL);
+        delete tmp;
+    }
+}
+
+
+//show functions
+template<class T>
+void dlist<T>::show() const {
+    if (head == NULL) { //If the list is empty, do nothing
+        return;
+    }
+    Node<T>* tmp = head;
+    while (tmp != NULL) { //run through the list and display the node data
+        cout << tmp -> data() << endl;
+        tmp = tmp -> next();
+    }
+}
+
+template<class T>
+void dlist<T>::reverse_show() const {
+    if (tail == NULL) { //if the list is empty, do nothing
+        return;
+    }
+    Node<T>* tmp = tail;
+    while (tmp != NULL) { //Run backwards through the list and display node data
+        cout << tmp -> data() << endl;
+        tmp = tmp -> previous();
+    }
+}
+
+template<class T>
+int dlist<T>::size() const {
+    if (head == NULL) { //If the list is empty, return 0
+        return 0;
+    } else {
+        int size = 0;
+        Node<T>* tmp = head;
+        while (tmp != NULL) { //Run through the list and size++ for every node in the list
+            tmp = tmp -> next();
+            size++;
+        }
+        return size;
+    }
+}
+
+
+//iterator functions, return the iterator at the given location
+template<class T>
+node_iterator<T> dlist<T>::begin() const {
+    return node_iterator<T>(head);
+}
+
+template<class T>
+node_iterator<T> dlist<T>::end() const {
+    return node_iterator<T>(NULL);
+}
+
+template<class T>
+node_iterator<T> dlist<T>::r_begin() const {
+    return node_iterator<T>(tail);
+}
+
+template<class T>
+node_iterator<T> dlist<T>::r_end() const {
+    return node_iterator<T>(NULL);
+}
+
+template<class T>
+void dlist<T>::remove(node_iterator<T> target) {
+if (head == NULL) { //If the list is empty, do nothing
+    return;
+} else if (target.current == head) { //If your target is the head of the list
+        Node<T>* tmp = head;
+        head = head -> next(); //practically the same as front removal
+        head -> set_previous(NULL);
+        delete tmp;
+} else if (target.current == tail) { //If your target is the tail of the list
+        Node<T>* tmp = tail;
+        tail = tail -> previous(); //practically the same as rear removal
+        tail -> set_next(NULL);
+        delete tmp;
+} else {
+        Node<T>* tmp = target.current; //if the target is anywhere else in the list
+        tmp -> next() -> set_previous(tmp -> previous()); //shuffle the pointers
+        tmp -> previous() -> set_next(tmp -> next());
+        delete tmp; //delete the target
+}
+
+}
+
+template<class T>
+void dlist<T>::insert_before(node_iterator<T>& target, T& item) {
+    if (target.current -> previous() == NULL) { //If the iterator is at the head of the list
+        Node<T>* tmp = new Node<T>(item);
+        tmp -> set_next(head); //shuffle the pointers
+        head -> set_previous(tmp);
+        head = tmp; //move head to the new head
+    } else {
+        Node<T>* tmp = new Node<T>(item); //If the iterator is anywhere else in the list
+        tmp -> set_previous(target.current -> previous());
+        tmp -> set_next(target.current); //shuffle the pointers
+        target.current -> previous() -> set_next(tmp);
+        target.current -> set_previous(tmp);
+    }
+}
+
+template<class T>
+void dlist<T>::insert_after(node_iterator<T>& target, T& item) {
+    /*if (target.current -> previous() == NULL) {
+        Node<T>* tmp = new Node<T>(item);
+        tmp -> set_next(head);
+        head -> set_previous(tmp);
+        head = tmp;
+    } else*/ if (target.current -> next() == NULL){ //If the iterator is at the tail
+        Node<T>* tmp = new Node<T>(item); //create a tmp
+        target.current -> set_next(tmp); //shuffle the pointers
+        tmp -> set_previous(target.current);
+        tail = tmp; //change the tail
+    } else {
+        Node<T>* tmp = new Node<T>(item); //If the iterator is anywhere else in the list
+        tmp -> set_previous(target.current); //shuffle the pointers
+        tmp -> set_next(target.current -> next());
+        target.current -> next() -> set_previous(tmp);
+        target.current -> set_next(tmp);
+    }
+}

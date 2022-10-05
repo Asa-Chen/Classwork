@@ -1,0 +1,55 @@
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab11> g++ main.cc
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab11> ./a.exe
+Enter a number: 23
+The even numbers counting up to x: 
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+Enter a number: 18
+The even numbers counting up to x: 
+2
+4
+6
+8
+10
+12
+14
+16
+18
+Enter a number: -2
+The even numbers counting up to x: 
+Enter a number between 1 and 30 to see the stars
+12
+*
+**
+***
+****
+*****
+******
+*******
+********
+*********
+**********
+***********
+************
+************
+***********
+**********
+*********
+********
+*******
+******
+*****
+****
+***
+**
+*
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab11> 

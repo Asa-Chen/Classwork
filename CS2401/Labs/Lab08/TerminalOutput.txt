@@ -1,0 +1,8 @@
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab08> g++ *.cc
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab08> ./a.exe
+41
+18467
+6334
+26500
+CS is the best at Ohio University
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab08>

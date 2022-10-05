@@ -1,0 +1,41 @@
+
+
+template<class T>
+Node<T>::Node(T d, Node* n, Node* p) {//default constructor
+    data_field = d;
+    next_field = n; //Setting everything to NULL
+    previous_field = p;
+}
+
+//accessors, simple stuff
+template<class T>
+T Node<T>::data() const {
+    return data_field;
+}
+
+template<class T>
+Node<T>* Node<T>::next() const {
+    return next_field;
+}
+
+template<class T>
+Node<T>* Node<T>::previous() const {
+    return previous_field;
+}
+
+
+//set functions, takes node or data arguments 
+template<class T>
+void Node<T>::set_data(T item) {
+    data_field = item;
+}
+
+template<class T>
+void Node<T>::set_next(Node* n) {
+    next_field = n;
+}
+
+template<class T>
+void Node<T>::set_previous(Node* p) {
+    previous_field = p;
+}

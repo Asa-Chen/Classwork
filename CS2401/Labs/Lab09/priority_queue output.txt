@@ -1,0 +1,23 @@
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab09> ./a.exe
+
+Input chore priority: 2
+Input chore: walk
+
+Input chore priority: 4
+Input chore: groceries
+
+Input chore priority: 2
+Input chore: wash dishes
+
+Input chore priority: 1
+Input chore: sleep
+
+Input chore priority: 5
+Input chore: cook
+
+Chore Priority: 5 Chore: cook
+Chore Priority: 4 Chore: groceries
+Chore Priority: 2 Chore: wash dishes
+Chore Priority: 2 Chore: walk
+Chore Priority: 1 Chore: sleep
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab09>

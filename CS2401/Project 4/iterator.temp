@@ -1,0 +1,45 @@
+//default constructor defined in header fils
+
+
+//operator functions
+template <class T>
+bool node_iterator<T>::operator != (const node_iterator other) const {
+    return current != other.current;
+}
+
+template <class T>
+bool node_iterator<T>::operator == (const node_iterator other) const {
+    return current == other.current;
+}
+
+template <class T>
+T node_iterator<T>::operator *() const {
+    return current -> data();
+}
+
+template <class T>
+node_iterator<T> node_iterator<T>::operator ++() {
+    current = current -> next();
+    return *this;
+}
+
+template <class T>
+node_iterator<T> node_iterator<T>::operator ++(int) {
+    node_iterator original(current);
+    current = current -> next();
+    return original;
+}
+
+template<class T>
+node_iterator<T> node_iterator<T>::operator --() {
+    current = current -> previous();
+    return *this;
+}
+
+template<class T>
+node_iterator<T> node_iterator<T>::operator --(int) {
+    node_iterator original(current);
+    current = current -> previous();
+    return original;
+}
+

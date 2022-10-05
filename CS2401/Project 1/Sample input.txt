@@ -1,0 +1,41 @@
+4351.65 //starting balance
+
+3 //check number
+
+1 //first check
+
+9/5/2017 //date
+
+Dave's Carryout //payed too
+
+18.49 //check amount
+
+2 //second check
+
+9/5/2017 //date
+
+Ohio University //payed too
+
+2346.75 //check amount
+
+//stoi accaptable?
+
+4351.65 
+
+3 
+
+1
+
+9/5/2017 
+
+Dave's Carryout 
+
+18.49 
+
+2 
+
+9/5/2017
+
+Ohio University
+
+2346.75 

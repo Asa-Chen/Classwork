@@ -1,0 +1,8 @@
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab13> g++ -g *.cc
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab13> ./a.exe    
+Please input a name to be searched: Matthew
+Matthew Appeared 7 times in the list: 44 Names come after Matthew in this list.       
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab13> ./a.exe
+Please input a name to be searched: Jessica
+Jessica Appeared 1 times in the list: 19 Names come after Jessica in this list.
+PS C:\Users\Asa\Documents\CS\CS2401\Labs\Lab13>
