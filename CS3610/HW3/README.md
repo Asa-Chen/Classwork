@@ -11,9 +11,9 @@
 
 ---
 
-### Name: Enter your name
+### Name: Asa Chen  
 
-### Email: Enter your OU email
+### Email: ac581218@ohio.edu  
 
 ---
 
