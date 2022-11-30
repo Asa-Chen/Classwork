@@ -1,0 +1,105 @@
+void encode (HTree tree, string inputFile, string outputFile) {
+    fstream in_f;
+    ofstream out_f;
+    string line;
+    char tmp;
+    bool isFound = false;
+    string returnVal = "Empty";
+    stringstream ss;
+
+    in_f.open(inputFile);
+    if (in_f.fail()) {
+      cout << "Load Failure!" << endl;
+        return;
+    } else {
+        out_f.open(outputFile);
+        if (out_f.fail()) {
+            cout << "Storage Failure!" << endl;
+            return;
+        }
+        while (!in_f.eof()) {
+            while (in_f.peek() == '\n' || in_f.peek() == ' ') {
+                in_f.get(tmp);
+                out_f << tmp;
+            }
+            if (in_f.eof()) {break;}
+            getline(in_f, line);
+            ss << line;
+            while (ss.peek() != EOF) {
+                while (ss.peek() == ' ' || ss.peek() == '.') {
+                    ss.get(tmp);
+                    out_f << tmp;
+                }
+                if (ss.peek() == EOF) {
+                    out_f << '\n';
+                    break;
+                    }
+                ss.get(tmp);
+            out_f << tree.computePath(tree.root, tmp, isFound, returnVal, "");
+            isFound = false;
+            returnVal = "Empty";
+            if (ss.peek() == EOF) {
+                    out_f << '\n';
+                    break;
+                    }
+            
+            }
+            ss.clear();
+        }
+        out_f.close();
+    }
+    in_f.close();
+
+}
+
+
+
+void decode (HTree tree, string inputFile, string outputFile) {
+    fstream in_f;
+    ofstream out_f;
+    string line;
+    char tmp;
+    bool isFound = false;
+    string returnVal = "Empty";
+    stringstream ss;
+
+    in_f.open(inputFile);
+    if (in_f.fail()) {
+      cout << "Load Failure!" << endl;
+        return;
+    } else {
+        out_f.open(outputFile);
+        if (out_f.fail()) {
+            cout << "Storage Failure!" << endl;
+            return;
+        }
+        while (!in_f.eof()) {
+            while (in_f.peek() == '\n' || in_f.peek() == ' ') {
+                in_f.get(tmp);
+                out_f << tmp;
+            }
+            if (in_f.eof()) {break;}
+            getline(in_f, line);
+            ss << line;
+            while (ss.peek() != EOF) {
+                while (ss.peek() == ' ' || ss.peek() == '.') {
+                    ss.get(tmp);
+                    out_f << tmp;
+                }
+                if (ss.peek() == EOF) {
+                    out_f << '\n';
+                    break;
+                    }
+                out_f << tree.computeCode(tree.root, ss);
+            if (ss.peek() == EOF) {
+                    out_f << '\n';
+                    break;
+                    }
+            
+            }
+            ss.clear();
+        }
+        out_f.close();
+    }
+    in_f.close();
+}
